@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/not-a-weeb/Documents/GitHub/file-findr/findr.cpp
+iostream
+-
+string
+-
+filesystem
+-
+fstream
+-
+iterator
+-
+vector
+-
+regex
+-
+findr.h
+/home/not-a-weeb/Documents/GitHub/file-findr/findr.h
+json/json.h
+-
+
+/home/not-a-weeb/Documents/GitHub/file-findr/findr.h
+string
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++  -lstdc++fs -std=c++17 -g   CMakeFiles/file_findr.dir/findr.cpp.o  -o file_findr   -L/home/not-a-weeb/jsoncpp/build/debug/lib  -Wl,-rpath,/home/not-a-weeb/jsoncpp/build/debug/lib -Wl,-Bstatic -ljsoncpp -Wl,-Bdynamic 

@@ -1,0 +1,3 @@
+/home/not-a-weeb/Documents/GitHub/file-findr/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/not-a-weeb/Documents/GitHub/file-findr/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/not-a-weeb/Documents/GitHub/file-findr/cmake-build-debug/CMakeFiles/file_findr.dir
