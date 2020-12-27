@@ -16,12 +16,13 @@
 #include <iterator>
 #include <vector>
 #include <regex>
-#include "findr.h"
 #include <json/json.h>
+#include "findr.h"
+#include "cxxopts.hpp"
 
 bool hasEnding(std::string full, std::string end);
 
-int main() {
+int main(int argc, char** argv) {
     // Get home path
     std::string path;
     //https://stackoverflow.com/questions/2552416/how-can-i-find-the-users-home-dir-in-a-cross-platform-manner-using-c
@@ -36,7 +37,12 @@ int main() {
 
     //TODO
     //Argument parser
-    path = "/home/not-a-weeb/Documents/GitHub/file-findr/demo_files";
+    cxxopts::Options options("file findr", "tf you want");
+    options.add_options()
+            ("d,dir", "directory", cxxopts::value<std::string>()->default_value(path))
+            ;
+    auto result = options.parse(argc, argv);
+    path = result["dir"].as<std::string>();
 
     // Get all matchers
     int count = 0;
@@ -57,7 +63,13 @@ int main() {
     try {
         using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
         for (auto dir_Entry: std::filesystem::recursive_directory_iterator(path)) {
+            if(!dir_Entry.exists())
+                continue;
+
             const auto filenameStr = dir_Entry.path().string();
+
+            if(std::filesystem::is_directory(filenameStr) && !std::filesystem::is_regular_file(filenameStr))
+                continue;
 
             std::ifstream ifs(filenameStr);
             std::string content((std::istreambuf_iterator<char>(ifs)),
@@ -77,10 +89,13 @@ int main() {
                 std::smatch sm;
                 std::regex r = (std::regex) root["regex"].asString();
                 if (std::regex_search(content, sm, r)) {
-                    for (int i = 0; i < sm.size(); i++) {
-                        //Match!
-                        std::cout << "\033[4;32m " << filenameStr << " \033[0m" << std::endl;
-                        std::cout << sm[i] << std::endl;
+                    for (int x = 0; x < sm.size(); x++) {
+                        if(!((std::string)sm[x]).empty()) {
+                            //Match!
+                            std::cout << "\033[1;31m" + root["name"].asString() + " Match! \033[4;32m\n";
+                            std::cout << "\033[4;32m" << filenameStr << "\033[0m" << std::endl;
+                            std::cout << sm[x] << std::endl;
+                        }
                     }
                 }
             }

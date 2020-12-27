@@ -6,6 +6,42 @@
 
 #IncludeRegexTransform: 
 
+/home/not-a-weeb/Documents/GitHub/file-findr/cxxopts.hpp
+cctype
+-
+cstring
+-
+exception
+-
+iostream
+-
+limits
+-
+list
+-
+map
+-
+memory
+-
+regex
+-
+sstream
+-
+string
+-
+unordered_map
+-
+unordered_set
+-
+utility
+-
+vector
+-
+optional
+-
+unicode/unistr.h
+-
+
 /home/not-a-weeb/Documents/GitHub/file-findr/findr.cpp
 iostream
 -
@@ -21,10 +57,12 @@ vector
 -
 regex
 -
-findr.h
-/home/not-a-weeb/Documents/GitHub/file-findr/findr.h
 json/json.h
 -
+findr.h
+/home/not-a-weeb/Documents/GitHub/file-findr/findr.h
+cxxopts.hpp
+/home/not-a-weeb/Documents/GitHub/file-findr/cxxopts.hpp
 
 /home/not-a-weeb/Documents/GitHub/file-findr/findr.h
 string
