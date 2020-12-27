@@ -91,11 +91,16 @@ int main(int argc, char** argv) {
                 if (std::regex_search(content, sm, r)) {
                     for (int x = 0; x < sm.size(); x++) {
                         if(!((std::string)sm[x]).empty()) {
+                            for (int j = 0; j < root["result_blacklist"].size(); ++j) {
+                                if(sm[x] == root["result_blacklist"][j].asString())
+                                    goto endf;
+                            }
                             //Match!
                             std::cout << "\033[1;31m" + root["name"].asString() + " Match! \033[4;32m\n";
                             std::cout << "\033[4;32m" << filenameStr << "\033[0m" << std::endl;
                             std::cout << sm[x] << std::endl;
                         }
+                    endf:;
                     }
                 }
             }
